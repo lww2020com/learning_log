@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <a href="{% url 'index' %}">learning_logs</a>-
+        <a href="{% url 'topics' %}">topics</a>
+    </p>
+    <p>
+        {% block content %}{% endblock content %}
+    </p>
+    
+</body>
+</html>

@@ -137,4 +137,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# 设置登录重定向
 LOGIN_REDIRECT_URL='learning_logs:index'
+# 设置登出重定向
+LOGOUT_REDIRECT_URL="learning_logs:index"

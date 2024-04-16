@@ -7,12 +7,25 @@
 </head>
 <body>
     <p>
-        <a href="{% url 'index' %}">learning_logs</a>-
-        <a href="{% url 'topics' %}">topics</a>
+        <a href="{% url 'learning_logs:index' %}">learning_logs</a>-
+        <a href="{% url 'learning_logs:topics' %}">topics</a>-
+        {% if user.is_authenticated %}
+        Hello,{{user.username}}!
+        {% else %}
+        <a href="{% url "accounts:login" %}">login</a>
+        {% endif %}
     </p>
     <p>
         {% block content %}{% endblock content %}
     </p>
-    
+    <p>
+        {% if user.is_authenticated %}
+        <hr/>
+        <form action="{% url "accounts:logout" %}" method="post">
+            {% csrf_token %}
+            <button type="submit">logout</button>
+        </form>
+        {% endif %}
+    </p>
 </body>
 </html>

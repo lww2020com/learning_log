@@ -2,11 +2,11 @@
 {% block content %}
 <p>topics:</p>
 {% for v in topics %}
-    <li><a href="{% url 'topic' v.id %}">{{v.text}}</a></li> 
+    <li><a href="{% url 'learning_logs:topic' v.id %}">{{v.text}}</a></li> 
     {%empty%}
     no topic
 {% endfor %}
 <p>
-    <a href="{% url "new_topic" %}">add topic</a>
+    <a href="{% url "learning_logs:new_topic" %}">add topic</a>
 </p>
 {% endblock content %}

@@ -2,23 +2,27 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Topic
 from .models import Entry
-from  .forms import EntryForm, TopicForm
+from .forms import EntryForm, TopicForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     context={'rs':'主页'}
     return render(request,'learning_logs/index.html',context)
 
+@login_required
 def topics(request):
     topics=Topic.objects.order_by('date_added')
     context={'topics':topics}
     return render(request,'learning_logs/topics.html',context)
 
+@login_required
 def topic(request,topic_id):
     topic=Topic.objects.get(id=topic_id)
     entries=topic.entry_set.order_by('-date_added')
     context={'topic':topic,'entries':entries}
     return render(request,'learning_logs/topic.html',context)
 
+@login_required
 def new_topic(request):
     if request.method !='POST':
         form=TopicForm()
@@ -33,6 +37,7 @@ def new_topic(request):
 
     return render(request,'learning_logs/new_topic.html',context)
 
+@login_required
 def new_entry(request,topic_id):
     
     topic=Topic.objects.get(id=topic_id)
@@ -53,6 +58,7 @@ def new_entry(request,topic_id):
 
     return render(request,'learning_logs/new_entry.html',context)
 
+@login_required
 def edit_entry(request,entry_id):
     entry=Entry.objects.get(id=entry_id)
     if request.method !='POST':

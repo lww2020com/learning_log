@@ -7,12 +7,13 @@
 </head>
 <body>
     <p>
-        <a href="{% url 'learning_logs:index' %}">learning_logs</a>-
-        <a href="{% url 'learning_logs:topics' %}">topics</a>-
+        <a href="{% url 'learning_logs:index' %}">学习笔记</a>-
+        <a href="{% url 'learning_logs:topics' %}">主题</a>-
         {% if user.is_authenticated %}
         Hello,{{user.username}}!
         {% else %}
-        <a href="{% url "accounts:login" %}">login</a>
+        <a href="{% url "accounts:login" %}">登录</a>-
+        <a href="{% url "accounts:register" %}">注册</a>
         {% endif %}
     </p>
     <p>
@@ -23,7 +24,7 @@
         <hr/>
         <form action="{% url "accounts:logout" %}" method="post">
             {% csrf_token %}
-            <button type="submit">logout</button>
+            <button type="submit">注销</button>
         </form>
         {% endif %}
     </p>

@@ -1,6 +1,10 @@
 {% extends "learning_logs/base.html" %}
+
+{% block page_header %}
+{{topic.text}}
+{% endblock page_header %}
+
 {% block content %}
-<p>Topic:{{topic.text}}</p>
 <p>{% for v in entries %}
     <p>{{v.date_added|date:"Y年m月d日"}}</p>
     <p>{{v.text}}</p>

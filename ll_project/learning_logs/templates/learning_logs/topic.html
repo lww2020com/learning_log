@@ -5,10 +5,17 @@
 {% endblock page_header %}
 
 {% block content %}
-<p>{% for v in entries %}
-    <p>{{v.date_added|date:"Y年m月d日"}}</p>
-    <p>{{v.text}}</p>
-    <p><a href="{% url "learning_logs:edit_entry" v.id %}">edit entry</a></p>
-    {% endfor %}</p>
-    <p><a href="{% url "learning_logs:new_entry" topic.id %}">add entry</a></p>
+<p><a href="{% url "learning_logs:new_entry" topic.id %}">add entry</a></p>
+    {% for v in entries %}
+    <div class="card mb-3">
+        <h6 class="card-header">
+            {{v.date_added|date:"Y年m月d日"}}
+            <small><a  class=" btn btn-primary btn-sm" href="{% url "learning_logs:edit_entry" v.id %}">edit entry</a></small>
+        </h6>
+        <div class="card-body">
+            {{v.text}}
+        </div>
+    </div>
+    {% endfor %}
+
 {% endblock content %}

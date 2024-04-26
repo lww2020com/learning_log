@@ -1,6 +1,6 @@
 {% extends "learning_logs/base.html" %}
 {% load django_bootstrap5 %}
-{% block page_header %}新增记录{% endblock page_header %}
+{% block page_header %}{{topic}}{% endblock page_header %}
 {% block content %}
 {% comment %} <p>add entry</p> {% endcomment %}
     <form action="{% url "learning_logs:new_entry" topic.id %}" method="post">

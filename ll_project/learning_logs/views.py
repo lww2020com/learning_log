@@ -50,7 +50,7 @@ def new_entry(request,topic_id):
     
     topic=Topic.objects.get(id=topic_id)
     if request.method !='POST':
-        entry=Entry()        
+        entry=Entry()      
         entry.topic=topic
         form=EntryForm(instance=entry)
     else:

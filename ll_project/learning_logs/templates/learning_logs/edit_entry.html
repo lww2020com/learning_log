@@ -1,4 +1,5 @@
 {% extends "learning_logs/base.html" %}
+{% block page_header %}{{entry.topic}}{% endblock page_header %}
 {% block content %}
 <form action="{% url "learning_logs:edit_entry" entry.id %}" method="post">
     {% csrf_token %}
